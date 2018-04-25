@@ -5,6 +5,7 @@ export STUNNEL_DEBUG="${STUNNEL_DEBUG:-5}"
 export STUNNEL_CLIENT="${STUNNEL_CLIENT:-no}"
 export STUNNEL_CAFILE="${STUNNEL_CAFILE:-/etc/ssl/certs/ca-certificates.crt}"
 export STUNNEL_VERIFY_CHAIN="${STUNNEL_VERIFY_CHAIN:-no}"
+export STUNNEL_VERIFY_PEER="${STUNNEL_VERIFY_PEER:-no}"
 export STUNNEL_KEY="${STUNNEL_KEY:-/etc/stunnel/stunnel.key}"
 export STUNNEL_CRT="${STUNNEL_CRT:-/etc/stunnel/stunnel.pem}"
 

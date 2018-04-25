@@ -19,3 +19,4 @@ key = ${STUNNEL_KEY}
 
 CAfile = ${STUNNEL_CAFILE}
 verifyChain = ${STUNNEL_VERIFY_CHAIN}
+verifyPeer = ${STUNNEL_VERIFY_PEER}
