@@ -1,4 +1,4 @@
-# frediweber/stunnel - fork of dweomer/stunnel
+# goofball222/stunnel - fork of frediweber/stunnel
 
 ## Stunnel on Alpine
 To secure an LDAP container named `directory`:
