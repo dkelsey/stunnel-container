@@ -1,3 +1,5 @@
+[![Latest Build Status](https://github.com/goofball222/stunnel/actions/workflows/build-latest.yml/badge.svg)](https://github.com/goofball222/stunnel/actions/workflows/build-latest.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/goofball222/stunnel.svg)](https://hub.docker.com/r/goofball222/stunnel/) [![Docker Stars](https://img.shields.io/docker/stars/goofball222/stunnel.svg)](https://hub.docker.com/r/goofball222/stunnel/) [![MB License](https://images.microbadger.com/badges/license/goofball222/stunnel.svg)](https://microbadger.com/images/goofball222/stunnel)
+
 # goofball222/stunnel - fork of frediweber/stunnel
 
 ## Stunnel on Alpine
@@ -11,7 +13,7 @@ docker run -itd --name ldaps --link directory:ldap \
         -p 636:636 \
 #       -v /etc/ssl/private/server.key:/etc/stunnel/stunnel.key:ro \
 #       -v /etc/ssl/private/server.crt:/etc/stunnel/stunnel.pem:ro \
-    frediweber/stunnel
+    goofball222/stunnel
 ```
 
 ### Copyright Notice
