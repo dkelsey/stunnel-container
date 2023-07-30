@@ -29,9 +29,9 @@ if [[ ! -f ${STUNNEL_KEY} ]]; then
         -config /srv/stunnel/openssl.cnf 
 fi
 
-cp -v ${STUNNEL_CAFILE} /usr/local/share/ca-certificates/stunnel-ca.crt
-cp -v ${STUNNEL_CRT} /usr/local/share/ca-certificates/stunnel.crt
-update-ca-certificates
+#cp -v ${STUNNEL_CAFILE} /usr/local/share/ca-certificates/stunnel-ca.crt
+#cp -v ${STUNNEL_CRT} /usr/local/share/ca-certificates/stunnel.crt
+#update-ca-certificates
 
 if [[ ! -s ${STUNNEL_CONF} ]]; then
     cat /srv/stunnel/stunnel.conf.template | envsubst > ${STUNNEL_CONF}
