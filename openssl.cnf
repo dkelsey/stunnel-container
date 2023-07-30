@@ -2,7 +2,7 @@ RANDFILE                = /dev/urandom
 
 [ req ]
 default_bits            = 2048
-default_keyfile         = /etc/stunnel/stunnel.key
+default_keyfile         = /etc/stunnel/client-keys/stunnel.key
 distinguished_name      = req_distinguished_name
 prompt                  = no
 policy                  = policy_anything
