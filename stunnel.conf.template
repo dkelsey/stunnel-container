@@ -1,8 +1,8 @@
 cert = ${STUNNEL_CRT}
 key = ${STUNNEL_KEY}
 
-setuid = stunnel
-setgid = stunnel
+;setuid = stunnel
+;setgid = stunnel
 
 pid = /var/run/stunnel/stunnel.pid
 
@@ -29,4 +29,4 @@ options = DONT_INSERT_EMPTY_FRAGMENTS
 ciphers = DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256
 # A Cipher list - https://www.owasp.org/index.php/TLS_Cipher_String_Cheat_Sheet
 #ciphers = DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256
-
+verify = 4
