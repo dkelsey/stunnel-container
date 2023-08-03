@@ -17,16 +17,25 @@ ARG VERSION
 
 RUN dnf -y update \
   && dnf -y upgrade  \
-  && dnf -y install gcc make openssl-devel git autoconf automake libtool m4
+  && dnf -y install gcc make openssl-devel git autoconf automake perl libtool m4
 
-RUN curl -s -O https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz \
+RUN cd \
+  && curl -s -O https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz \
   && tar xvf ./autoconf-2.71.tar.gz \
   && cd autoconf-2.71 \
   && ./configure \
   && make \
   && make install \
   && mv /usr/bin/autoconf /usr/bin/autoconf.bak \
-  && ln -s /usr/local/bin/autoconf /usr/bin/autoconf
+  && ln -s /usr/local/bin/autoconf /usr/bin/autoconf \
+  && cd
+
+RUN curl -s -O https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz \
+  && tar xvf automake-1.16.5.tar.gz \
+  && cd automake-1.16.5 \
+  && ./configure \
+  && make -i \
+  && make install
 
 # RUN set -x \
 #     && addgroup -S stunnel \
