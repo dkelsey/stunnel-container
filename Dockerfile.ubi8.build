@@ -1,4 +1,6 @@
-FROM ubi8:latest
+FROM ubi8:8.6
+#FROM ubi7:7.9
+#FROM ubi8:8.8-1009
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -37,6 +39,7 @@ RUN curl -s -O https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz \
   && make -i \
   && make install
 
+RUN dnf clean all
 # RUN set -x \
 #     && addgroup -S stunnel \
 #     && adduser -S -G stunnel stunnel \
@@ -53,7 +56,9 @@ RUN curl -s -O https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz \
 RUN cd \
   && git clone https://github.com/dkelsey/stunnel.git \
   && cd stunnel \
-  && git checkout explore \
+  && git checkout explore
+
+RUN cd && cd stunnel \
   && ./configure \
   && make \
   && make install
