@@ -19,7 +19,7 @@ ARG VERSION
 
 RUN dnf -y update \
   && dnf -y upgrade  \
-  && dnf -y install gcc make openssl-devel git autoconf automake perl libtool m4
+  && dnf -y install gcc make openssl-devel git autoconf automake perl libtool m4 gettext
 
 RUN cd \
   && curl -s -O https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz \
