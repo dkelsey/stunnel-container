@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
-export STUNNEL_CONF="/etc/stunnel/stunnel.conf"
+export STUNNEL_CONF="/usr/local/etc/stunnel/stunnel.conf"
+#export STUNNEL_CONF="/etc/stunnel/stunnel.conf"
 export STUNNEL_DEBUG="${STUNNEL_DEBUG:-7}"
 export STUNNEL_CLIENT="${STUNNEL_CLIENT:-no}"
 #export STUNNEL_SNI="${STUNNEL_SNI:-}"
