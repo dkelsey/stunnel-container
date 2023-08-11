@@ -25,6 +25,7 @@ accept = ${STUNNEL_ACCEPT}
 connect = ${STUNNEL_CONNECT}
 delay = ${STUNNEL_DELAY}
 ; dk
+options = NO_SSLv3
 options = NO_TLSv1_3
 options = CIPHER_SERVER_PREFERENCE
 options = DONT_INSERT_EMPTY_FRAGMENTS
