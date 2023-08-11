@@ -17,13 +17,15 @@ verifyPeer = ${STUNNEL_VERIFY_PEER}
 debug = ${STUNNEL_DEBUG}
 output = /var/log/stunnel/stunnel.log
 foreground = yes
-sslVersion = all
+;sslVersion = all
 client = ${STUNNEL_CLIENT}
 
 [${STUNNEL_SERVICE}]
 accept = ${STUNNEL_ACCEPT}
 connect = ${STUNNEL_CONNECT}
 delay = ${STUNNEL_DELAY}
+; dk
+options = NO_SSLv3
 options = CIPHER_SERVER_PREFERENCE
 options = DONT_INSERT_EMPTY_FRAGMENTS
 # A+ Cipher list - https://www.owasp.org/index.php/TLS_Cipher_String_Cheat_Sheet
