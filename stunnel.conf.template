@@ -12,11 +12,12 @@ socket = r:TCP_NODELAY=1
 CAfile = ${STUNNEL_CAFILE}
 verifyChain = ${STUNNEL_VERIFY_CHAIN}
 verifyPeer = ${STUNNEL_VERIFY_PEER}
-sslVersionMin = TLSv1.2
+;sslVersionMin = TLSv1.2
 
 debug = ${STUNNEL_DEBUG}
 output = /var/log/stunnel/stunnel.log
 foreground = yes
+sslVersion = all
 client = ${STUNNEL_CLIENT}
 
 [${STUNNEL_SERVICE}]
