@@ -19,7 +19,7 @@ ARG VERSION
 
 RUN dnf -y update \
   && dnf -y upgrade  \
-  && dnf -y install gcc make openssl-devel git autoconf automake perl libtool m4 gettext
+  && dnf -y install gcc make openssl-devel git autoconf automake perl libtool m4 gettext ca-certificates
 
 RUN cd \
   && curl -s -O https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz \
@@ -40,6 +40,7 @@ RUN curl -s -O https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz \
   && make install
 
 RUN dnf clean all
+
 RUN set -x \
   && groupadd stunnel \
   && useradd -g stunnel stunnel # \
@@ -51,11 +52,13 @@ RUN set -x \
 #     && apk --no-network info openssl \
 #     && apk --no-network info stunnel
 
-# RUN apk add perl build-base git openssl-dev autoconf automake pkgconfig libtool linux-headers python3
+
+USER stunnel
 
 RUN cd \
   && git clone https://github.com/dkelsey/stunnel.git \
-  && cd stunnel # \
+  && cd stunnel
+# \
 #  && git checkout explore
 
 RUN cd && cd stunnel \
@@ -69,7 +72,8 @@ COPY stunnel.sh /srv/
 
 RUN set -x \
     && chmod +x /srv/stunnel.sh \
-    && mkdir -p /var/run/stunnel /var/log/stunnel 
+    && mkdir -p /var/run/stunnel /var/log/stunnel \
+    && mkdir -p /usr/local/etc/stunnel
     #\
     #&& mv -v /etc/stunnel/stunnel.conf /etc/stunnel/stunnel.conf.original
     #&& chown -vR stunnel:stunnel /var/run/stunnel /var/log/stunnel \
