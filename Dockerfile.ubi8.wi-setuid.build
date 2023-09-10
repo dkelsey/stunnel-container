@@ -43,7 +43,8 @@ RUN dnf clean all
 
 RUN set -x \
   && groupadd stunnel \
-  && useradd -g stunnel stunnel # \
+  && useradd -g stunnel stunnel
+# \
 #     && apk add --update --no-cache \
 #         ca-certificates gettext libintl openssl stunnel \
 #     && cp -v /usr/bin/envsubst /usr/local/bin/ \
