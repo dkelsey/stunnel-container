@@ -1,0 +1,77 @@
+FROM stunnle-image-build:8.8-1009
+
+#ARG BUILD_DATE
+#ARG VCS_REF
+#ARG VERSION
+
+# LABEL \
+#     org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
+#     org.opencontainers.image.url="https://github.com/goofball222/stunnel" \
+#     org.opencontainers.image.title="STunnel Docker Container" \
+#     org.opencontainers.image.description="STunnel Docker Container" \
+#     org.opencontainers.image.version=$VERSION \
+#     org.opencontainers.image.source="https://github.com/goofball222/stunnel" \
+#     org.opencontainers.image.revision=$VCS_REF \
+#     org.opencontainers.image.created=$BUILD_DATE \
+#     org.opencontainers.image.licenses="MIT"
+
+#RUN dnf -y update \
+#  && dnf -y upgrade  \
+#  && dnf -y install gcc make openssl-devel git autoconf automake perl libtool m4 gettext
+
+#RUN cd \
+#  && curl -s -O https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.gz \
+#  && tar xvf ./autoconf-2.71.tar.gz \
+#  && cd autoconf-2.71 \
+#  && ./configure \
+#  && make \
+#  && make install \
+#  && mv /usr/bin/autoconf /usr/bin/autoconf.bak \
+#  && ln -s /usr/local/bin/autoconf /usr/bin/autoconf \
+#  && cd
+#
+#RUN curl -s -O https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz \
+#  && tar xvf automake-1.16.5.tar.gz \
+#  && cd automake-1.16.5 \
+#  && ./configure \
+#  && make -i \
+#  && make install
+#
+#RUN dnf clean all
+# RUN set -x \
+#     && addgroup -S stunnel \
+#     && adduser -S -G stunnel stunnel \
+#     && apk add --update --no-cache \
+#         ca-certificates gettext libintl openssl stunnel \
+#     && cp -v /usr/bin/envsubst /usr/local/bin/ \
+#     && apk del --purge \
+#         gettext \
+#     && apk --no-network info openssl \
+#     && apk --no-network info stunnel
+
+# RUN apk add perl build-base git openssl-dev autoconf automake pkgconfig libtool linux-headers python3
+
+# RUN cd \
+#   && git clone https://github.com/dkelsey/stunnel.git \
+#   && cd stunnel \
+#   && git checkout explore
+
+# RUN cd && cd stunnel \
+#   && ./configure \
+#   && make \
+#   && make install
+
+COPY *.template openssl.cnf /srv/stunnel/
+
+COPY stunnel.sh /srv/
+
+RUN set -x \
+    && chmod +x /srv/stunnel.sh \
+    && mkdir -p /var/run/stunnel /var/log/stunnel 
+    #\
+    #&& mv -v /etc/stunnel/stunnel.conf /etc/stunnel/stunnel.conf.original
+    #&& chown -vR stunnel:stunnel /var/run/stunnel /var/log/stunnel \
+
+ENTRYPOINT ["/srv/stunnel.sh"]
+
+CMD ["stunnel"]
